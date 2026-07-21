@@ -1,7 +1,4 @@
 (() => {
-  const modal = document.getElementById("wechat-modal");
-  const openWechatButton = document.getElementById("open-wechat");
-  const copyWechatButton = document.getElementById("copy-wechat-id");
   const locationButton = document.getElementById("share-location");
   const toast = document.getElementById("toast");
   const themeToggle = document.getElementById("theme-toggle");
@@ -11,28 +8,11 @@
   let toastTimer;
 
   const TEXT = {
-    darkMode: {
-      ko: "다크 모드",
-      en: "Dark mode"
-    },
-    lightMode: {
-      ko: "라이트 모드",
-      en: "Light mode"
-    },
-    switchToDark: {
-      ko: "다크 모드로 전환",
-      en: "Switch to dark mode"
-    },
-    switchToLight: {
-      ko: "라이트 모드로 전환",
-      en: "Switch to light mode"
-    },
-    copiedWechat: {
-      ko: "WeChat ID가 복사되었습니다.",
-      en: "WeChat ID has been copied.",
-      zhHant: "WeChat ID 已複製。",
-      zhHans: "WeChat ID 已复制。"
-    },
+    darkMode: { ko: "다크 모드", en: "Dark mode" },
+    lightMode: { ko: "라이트 모드", en: "Light mode" },
+    switchToDark: { ko: "다크 모드로 전환", en: "Switch to dark mode" },
+    switchToLight: { ko: "라이트 모드로 전환", en: "Switch to light mode" },
+
     noGeolocation: {
       ko: "이 브라우저에서는 위치 기능을 지원하지 않습니다.",
       en: "This browser does not support location services.",
@@ -95,12 +75,8 @@
     }
   };
 
-  function multiline(item) {
-    return [item.ko, item.en, item.zhHant, item.zhHans].join("\n");
-  }
-
-  function inline(item) {
-    return [item.ko, item.en, item.zhHant, item.zhHans].filter(Boolean).join(" · ");
+  function multilingualLines(item) {
+    return [item.ko, item.en, item.zhHant, item.zhHans].filter(Boolean).join("\n");
   }
 
   function koEnInline(item) {
@@ -138,55 +114,17 @@
     }
   }
 
-  applyTheme(getCurrentTheme(), false);
-
-  themeToggle.addEventListener("click", () => {
-    const nextTheme = getCurrentTheme() === "dark" ? "light" : "dark";
-    applyTheme(nextTheme);
-  });
-
   function showToast(item) {
     window.clearTimeout(toastTimer);
-    toast.textContent = typeof item === "string" ? item : multiline(item);
+    toast.textContent = typeof item === "string" ? item : multilingualLines(item);
     toast.classList.add("show");
     toastTimer = window.setTimeout(() => toast.classList.remove("show"), 4200);
   }
 
-  function openModal() {
-    modal.hidden = false;
-    document.body.classList.add("modal-open");
-    const closeButton = modal.querySelector(".modal-close");
-    window.setTimeout(() => closeButton.focus(), 0);
-  }
+  applyTheme(getCurrentTheme(), false);
 
-  function closeModal() {
-    modal.hidden = true;
-    document.body.classList.remove("modal-open");
-    openWechatButton.focus();
-  }
-
-  openWechatButton.addEventListener("click", openModal);
-
-  modal.addEventListener("click", (event) => {
-    if (event.target.closest("[data-close-modal]")) closeModal();
-  });
-
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && !modal.hidden) closeModal();
-  });
-
-  copyWechatButton.addEventListener("click", async () => {
-    try {
-      await navigator.clipboard.writeText("shinmin");
-      showToast(TEXT.copiedWechat);
-    } catch {
-      showToast(
-        "WeChat ID: shinmin\n" +
-        "WeChat ID: shinmin\n" +
-        "WeChat ID：shinmin\n" +
-        "WeChat ID：shinmin"
-      );
-    }
+  themeToggle.addEventListener("click", () => {
+    applyTheme(getCurrentTheme() === "dark" ? "light" : "dark");
   });
 
   locationButton.addEventListener("click", () => {
@@ -228,9 +166,7 @@
             window.location.href = `sms:?body=${encodeURIComponent(shareText)}`;
           }
         } catch (error) {
-          if (error.name !== "AbortError") {
-            showToast(TEXT.locationShareFailed);
-          }
+          if (error.name !== "AbortError") showToast(TEXT.locationShareFailed);
         } finally {
           restoreLocationButton();
         }
@@ -260,7 +196,7 @@
 
   if ("serviceWorker" in navigator && location.protocol === "https:") {
     window.addEventListener("load", () => {
-      navigator.serviceWorker.register("./sw.js?v=6").catch(() => {});
+      navigator.serviceWorker.register("./sw.js?v=7").catch(() => {});
     });
   }
 })();
