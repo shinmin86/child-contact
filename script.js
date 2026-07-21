@@ -89,12 +89,12 @@
     navigator.geolocation.getCurrentPosition(
       async ({ coords }) => {
         const mapUrl = `https://maps.google.com/?q=${coords.latitude},${coords.longitude}`;
-        const text = `미아 보호 연락입니다. 송아이의 현재 위치: ${mapUrl}`;
+        const text = `미아 보호 연락입니다.송가빈의 현재 위치: ${mapUrl}`;
 
         try {
           if (navigator.share) {
             await navigator.share({
-              title: "송아이 현재 위치",
+              title: "송가빈 현재 위치",
               text
             });
             showToast("공유 화면을 열었습니다.");
