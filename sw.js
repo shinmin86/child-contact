@@ -1,9 +1,9 @@
-const CACHE_NAME = "child-contact-v1";
+const CACHE_NAME = "child-contact-v3";
 const ASSETS = [
   "./",
   "./index.html",
-  "./style.css",
-  "./script.js",
+  "./style.css?v=3",
+  "./script.js?v=3",
   "./manifest.webmanifest",
   "./assets/logo.svg",
   "./assets/kakao.svg",

@@ -90,7 +90,7 @@ button { font: inherit; }
   padding: 22px 14px;
   border: 1px solid var(--line);
   border-radius: 22px;
-  background: #fff;
+  background: var(--surface);
   box-shadow: var(--shadow-sm);
 }
 
@@ -118,7 +118,7 @@ button { font: inherit; }
 .identity-caption {
   display: block;
   margin-top: 5px;
-  color: #98a2b3;
+  color: var(--muted-soft);
   font-size: 12px;
 }
 
@@ -168,11 +168,11 @@ button { font: inherit; }
 .action-location {
   color: var(--text);
   border: 1px solid var(--line);
-  background: #fff;
+  background: var(--surface);
   box-shadow: 0 8px 20px rgba(28, 43, 76, .06);
 }
 
-.action-location { background: #f8fbff; }
+.action-location { background: var(--surface-soft); }
 
 .action-icon {
   width: 52px;
@@ -229,7 +229,7 @@ button { font: inherit; }
   padding: 8px 16px;
   border: 1px solid var(--line);
   border-radius: 20px;
-  background: #fff;
+  background: var(--surface);
 }
 
 .languages p {
@@ -239,7 +239,7 @@ button { font: inherit; }
   gap: 8px;
   margin: 0;
   padding: 12px 0;
-  color: #344054;
+  color: var(--text-secondary);
   font-size: 13px;
   line-height: 1.45;
 }
@@ -268,7 +268,7 @@ footer p { margin: 0; }
 .modal-backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(15, 23, 42, .52);
+  background: var(--backdrop);
   backdrop-filter: blur(5px);
 }
 
@@ -280,7 +280,7 @@ footer p { margin: 0; }
   overflow: auto;
   padding: 24px 20px max(24px, env(safe-area-inset-bottom));
   border-radius: 28px 28px 0 0;
-  background: #fff;
+  background: var(--surface);
   box-shadow: 0 -24px 70px rgba(15, 23, 42, .20);
   animation: rise .22s ease-out;
 }
@@ -343,7 +343,7 @@ footer p { margin: 0; }
   margin: 20px auto 16px;
   border: 1px solid var(--line);
   border-radius: 20px;
-  background: #fff;
+  background: var(--surface);
 }
 
 .wechat-id-row {
@@ -353,7 +353,7 @@ footer p { margin: 0; }
   gap: 16px;
   padding: 14px 16px;
   border-radius: 16px;
-  background: #f2fbf6;
+  background: var(--surface-green);
 }
 
 .wechat-id-row span {
@@ -403,7 +403,7 @@ footer p { margin: 0; }
   padding: 12px 16px;
   border-radius: 14px;
   color: #fff;
-  background: rgba(15,23,42,.94);
+  background: var(--toast-bg);
   box-shadow: 0 12px 30px rgba(15,23,42,.2);
   font-size: 13px;
   line-height: 1.4;
@@ -438,4 +438,225 @@ body.modal-open { overflow: hidden; }
     padding-inline: 12px;
   }
   .action-icon { width: 46px; height: 46px; }
+}
+
+
+/* v2: English + Traditional Chinese + Simplified Chinese shown together */
+.hero-subtitle span,
+.identity-caption span,
+.multilingual-copy span,
+footer p {
+  display: block;
+}
+
+.hero-subtitle {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.hero-subtitle span + span { margin-top: 2px; }
+
+.identity-caption {
+  line-height: 1.35;
+}
+
+.identity-caption span {
+  font-size: 10px;
+}
+
+.action {
+  min-height: 100px;
+}
+
+.multilingual-copy span {
+  line-height: 1.42;
+}
+
+.multilingual-copy .phone-number {
+  margin-top: 3px;
+  font-size: 12px;
+  font-weight: 800;
+  opacity: 1;
+}
+
+footer {
+  line-height: 1.45;
+}
+
+footer p {
+  margin: 2px 0;
+}
+
+.modal-title-translation {
+  margin: 2px 0 0;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.35;
+}
+
+.modal-help p {
+  margin: 5px 0;
+}
+
+@media (max-width: 390px) {
+  .action { min-height: 104px; }
+  .multilingual-copy { font-size: 10px !important; }
+  .identity-caption span { font-size: 9px; }
+}
+
+
+/* v3: Light / Dark theme */
+:root {
+  color-scheme: light;
+  --page-bg: #f4f7fc;
+  --card: rgba(255,255,255,.94);
+  --surface: #ffffff;
+  --surface-soft: #f8fbff;
+  --surface-green: #f2fbf6;
+  --surface-blue: #eff6ff;
+  --line: #e5eaf2;
+  --text: #101828;
+  --text-secondary: #344054;
+  --muted: #667085;
+  --muted-soft: #98a2b3;
+  --blue: #2563eb;
+  --blue-soft: #eff6ff;
+  --kakao: #fee500;
+  --wechat: #07c160;
+  --backdrop: rgba(15, 23, 42, .52);
+  --toast-bg: rgba(15, 23, 42, .94);
+  --shadow-lg: 0 24px 70px rgba(28, 43, 76, .12);
+  --shadow-sm: 0 10px 24px rgba(28, 43, 76, .08);
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --page-bg: #08111f;
+  --card: rgba(15, 23, 42, .92);
+  --surface: #111c2d;
+  --surface-soft: #0d1a2c;
+  --surface-green: #0b2b21;
+  --surface-blue: #0d213f;
+  --line: #26354a;
+  --text: #f8fafc;
+  --text-secondary: #d8e1ee;
+  --muted: #aebbd0;
+  --muted-soft: #8492a6;
+  --blue: #73a7ff;
+  --blue-soft: #102b53;
+  --backdrop: rgba(2, 6, 23, .76);
+  --toast-bg: rgba(241, 245, 249, .96);
+  --shadow-lg: 0 24px 80px rgba(0, 0, 0, .42);
+  --shadow-sm: 0 12px 28px rgba(0, 0, 0, .28);
+}
+
+html[data-theme="dark"] body {
+  background:
+    radial-gradient(circle at 15% 0%, rgba(63, 126, 255, .17), transparent 34%),
+    radial-gradient(circle at 88% 16%, rgba(7, 193, 96, .11), transparent 30%),
+    var(--page-bg);
+}
+
+html[data-theme="dark"] .contact-card {
+  border-color: rgba(148, 163, 184, .12);
+}
+
+html[data-theme="dark"] .identity-card,
+html[data-theme="dark"] .action-phone,
+html[data-theme="dark"] .languages,
+html[data-theme="dark"] .modal-panel {
+  background: var(--surface);
+}
+
+html[data-theme="dark"] .action-location {
+  background: var(--surface-soft);
+}
+
+html[data-theme="dark"] .languages p,
+html[data-theme="dark"] .modal-close,
+html[data-theme="dark"] .wechat-id-row span {
+  color: var(--text-secondary);
+}
+
+html[data-theme="dark"] .languages p + p {
+  border-top-color: var(--line);
+}
+
+html[data-theme="dark"] .wechat-id-row {
+  background: var(--surface-green);
+}
+
+html[data-theme="dark"] .modal-close {
+  background: #1d2a3d;
+}
+
+html[data-theme="dark"] .wechat-qr {
+  border-color: #334155;
+  background: var(--surface);
+}
+
+html[data-theme="dark"] .toast {
+  color: #0f172a;
+  background: var(--toast-bg);
+}
+
+html[data-theme="dark"] .action-kakao {
+  color: #191919;
+}
+
+.theme-toggle {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 40px;
+  padding: 8px 11px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--text-secondary);
+  background: color-mix(in srgb, var(--surface) 90%, transparent);
+  box-shadow: 0 6px 18px rgba(28, 43, 76, .08);
+  cursor: pointer;
+  transition: transform .15s ease, background .2s ease, color .2s ease;
+}
+
+.theme-toggle:hover { transform: translateY(-1px); }
+.theme-toggle:active { transform: scale(.97); }
+
+.theme-toggle:focus-visible {
+  outline: 3px solid rgba(37, 99, 235, .28);
+  outline-offset: 3px;
+}
+
+.theme-toggle-icon {
+  font-size: 16px;
+  line-height: 1;
+}
+
+.theme-toggle-text {
+  font-size: 11px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.contact-card {
+  position: relative;
+}
+
+@media (max-width: 390px) {
+  .theme-toggle {
+    top: 12px;
+    right: 12px;
+    min-height: 36px;
+    padding: 7px 9px;
+  }
+
+  .theme-toggle-text {
+    display: none;
+  }
 }

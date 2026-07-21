@@ -4,7 +4,36 @@
   const copyWechatButton = document.getElementById("copy-wechat-id");
   const locationButton = document.getElementById("share-location");
   const toast = document.getElementById("toast");
+  const themeToggle = document.getElementById("theme-toggle");
+  const themeIcon = themeToggle.querySelector(".theme-toggle-icon");
+  const themeText = themeToggle.querySelector(".theme-toggle-text");
+  const themeColorMeta = document.getElementById("theme-color-meta");
   let toastTimer;
+
+  function getCurrentTheme() {
+    return document.documentElement.dataset.theme === "dark" ? "dark" : "light";
+  }
+
+  function applyTheme(theme, persist = true) {
+    const isDark = theme === "dark";
+    document.documentElement.dataset.theme = isDark ? "dark" : "light";
+    themeToggle.setAttribute("aria-pressed", String(isDark));
+    themeToggle.setAttribute("aria-label", isDark ? "라이트 모드로 전환" : "다크 모드로 전환");
+    themeIcon.textContent = isDark ? "☀️" : "🌙";
+    themeText.textContent = isDark ? "라이트 모드" : "다크 모드";
+    themeColorMeta.setAttribute("content", isDark ? "#08111f" : "#f5f8ff");
+
+    if (persist) {
+      localStorage.setItem("child-contact-theme", isDark ? "dark" : "light");
+    }
+  }
+
+  applyTheme(getCurrentTheme(), false);
+
+  themeToggle.addEventListener("click", () => {
+    const nextTheme = getCurrentTheme() === "dark" ? "light" : "dark";
+    applyTheme(nextTheme);
+  });
 
   function showToast(message) {
     window.clearTimeout(toastTimer);
@@ -39,7 +68,7 @@
   copyWechatButton.addEventListener("click", async () => {
     try {
       await navigator.clipboard.writeText("shinmin");
-      showToast("WeChat ID가 복사되었습니다.");
+      showToast("WeChat ID가 복사되었습니다. / 已複製 / 已复制");
     } catch {
       showToast("WeChat ID: shinmin");
     }
@@ -106,7 +135,7 @@
 
   if ("serviceWorker" in navigator && location.protocol === "https:") {
     window.addEventListener("load", () => {
-      navigator.serviceWorker.register("./sw.js").catch(() => {});
+      navigator.serviceWorker.register("./sw.js?v=3").catch(() => {});
     });
   }
 })();

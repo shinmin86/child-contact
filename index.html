@@ -3,34 +3,60 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#f5f8ff">
+  <meta name="theme-color" id="theme-color-meta" content="#f5f8ff">
   <meta name="description" content="미아 발생 시 보호자에게 빠르게 연락할 수 있는 안전 연락 페이지">
   <title>Child Safety Contact</title>
+  <script>
+    (() => {
+      const saved = localStorage.getItem("child-contact-theme");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      const theme = saved || (prefersDark ? "dark" : "light");
+      document.documentElement.dataset.theme = theme;
+    })();
+  </script>
   <link rel="icon" type="image/png" href="./assets/favicon.png">
   <link rel="manifest" href="./manifest.webmanifest">
-  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./style.css?v=3">
 </head>
 <body>
   <main class="page-shell">
     <section class="contact-card" aria-labelledby="page-title">
+      <button class="theme-toggle" id="theme-toggle" type="button"
+              aria-label="다크 모드 전환" aria-pressed="false">
+        <span class="theme-toggle-icon" aria-hidden="true">🌙</span>
+        <span class="theme-toggle-text">다크 모드</span>
+      </button>
+
       <header class="hero">
         <img class="brand-mark" src="./assets/logo.svg" alt="">
         <p class="eyebrow">CHILD SAFETY CONTACT</p>
         <h1 id="page-title">미아 발생 시 연락 부탁드립니다</h1>
-        <p class="hero-subtitle">Please contact the guardian if this child is lost.</p>
+        <div class="hero-subtitle">
+          <span lang="en">Please contact the guardian if this child is lost.</span>
+          <span lang="zh-Hant">若孩子走失，請與監護人聯絡。</span>
+          <span lang="zh-Hans">如孩子走失，请与监护人联系。</span>
+        </div>
       </header>
 
       <section class="identity-card" aria-label="아이와 보호자 정보">
         <div class="identity-item">
           <span class="identity-label">아이 이름</span>
           <strong>송아이</strong>
-          <span class="identity-caption">Child</span>
+          <span class="identity-caption">
+            <span lang="en">Child</span>
+            <span lang="zh-Hant">孩子姓名</span>
+            <span lang="zh-Hans">孩子姓名</span>
+          </span>
         </div>
         <div class="identity-divider" aria-hidden="true"></div>
         <div class="identity-item">
           <span class="identity-label">보호자 이름</span>
           <strong>송어른</strong>
-          <span class="identity-caption">Guardian</span>
+          <span class="identity-caption">
+            <span lang="en">Guardian</span>
+            <span lang="zh-Hant">監護人</span>
+            <span lang="zh-Hans">监护人</span>
+          </span>
         </div>
       </section>
 
@@ -41,7 +67,11 @@
           </span>
           <span class="action-copy">
             <strong>카카오톡으로 연락하기</strong>
-            <small>오픈채팅으로 바로 연결됩니다</small>
+            <small class="multilingual-copy">
+              <span lang="en">Contact via KakaoTalk</span>
+              <span lang="zh-Hant">透過 KakaoTalk 聯絡</span>
+              <span lang="zh-Hans">通过 KakaoTalk 联系</span>
+            </small>
           </span>
           <span class="chevron" aria-hidden="true">›</span>
         </a>
@@ -52,7 +82,11 @@
           </span>
           <span class="action-copy">
             <strong>WeChat으로 연락하기</strong>
-            <small>QR 코드 또는 ID: shinmin</small>
+            <small class="multilingual-copy">
+              <span lang="en">Contact via WeChat · ID: shinmin</span>
+              <span lang="zh-Hant">透過 WeChat 聯絡 · ID：shinmin</span>
+              <span lang="zh-Hans">通过 WeChat 联系 · ID：shinmin</span>
+            </small>
           </span>
           <span class="chevron" aria-hidden="true">›</span>
         </button>
@@ -63,7 +97,12 @@
           </span>
           <span class="action-copy">
             <strong>전화로 연락하기</strong>
-            <small>+82 10-1111-2222</small>
+            <small class="multilingual-copy">
+              <span lang="en">Call guardian</span>
+              <span lang="zh-Hant">致電監護人</span>
+              <span lang="zh-Hans">致电监护人</span>
+              <span class="phone-number">+82 10-1111-2222</span>
+            </small>
           </span>
           <span class="chevron chevron-blue" aria-hidden="true">›</span>
         </a>
@@ -74,7 +113,11 @@
           </span>
           <span class="action-copy">
             <strong>현재 위치 공유하기</strong>
-            <small>위치 권한 허용 후 공유할 수 있습니다</small>
+            <small class="multilingual-copy">
+              <span lang="en">Share current location</span>
+              <span lang="zh-Hant">分享目前位置</span>
+              <span lang="zh-Hans">分享当前位置</span>
+            </small>
           </span>
           <span class="chevron chevron-blue" aria-hidden="true">›</span>
         </button>
@@ -89,6 +132,9 @@
 
       <footer>
         <p>아이의 안전을 위해 도움을 주셔서 감사합니다.</p>
+        <p lang="en">Thank you for helping keep this child safe.</p>
+        <p lang="zh-Hant">感謝您協助保護孩子的安全。</p>
+        <p lang="zh-Hans">感谢您帮助保护孩子的安全。</p>
       </footer>
     </section>
   </main>
@@ -104,6 +150,9 @@
         <div>
           <p class="modal-kicker">WECHAT CONTACT</p>
           <h2 id="wechat-title">WeChat으로 연락하기</h2>
+          <p class="modal-title-translation" lang="en">Contact via WeChat</p>
+          <p class="modal-title-translation" lang="zh-Hant">透過 WeChat 聯絡</p>
+          <p class="modal-title-translation" lang="zh-Hans">通过 WeChat 联系</p>
         </div>
       </div>
 
@@ -120,15 +169,17 @@
         </button>
       </div>
 
-      <p class="modal-help">
-        WeChat 앱의 <b>스캔</b> 기능으로 QR 코드를 촬영하거나,
-        ID <b>shinmin</b>을 검색해 주세요.
-      </p>
+      <div class="modal-help">
+        <p>WeChat 앱의 <b>스캔</b> 기능으로 QR 코드를 촬영하거나 ID <b>shinmin</b>을 검색해 주세요.</p>
+        <p lang="en">Scan the QR code in WeChat or search for ID <b>shinmin</b>.</p>
+        <p lang="zh-Hant">請使用 WeChat 的掃描功能掃描 QR Code，或搜尋 ID <b>shinmin</b>。</p>
+        <p lang="zh-Hans">请使用 WeChat 的扫一扫功能扫描二维码，或搜索 ID <b>shinmin</b>。</p>
+      </div>
     </section>
   </div>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-  <script src="./script.js"></script>
+  <script src="./script.js?v=3"></script>
 </body>
 </html>
