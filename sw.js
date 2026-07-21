@@ -1,20 +1,18 @@
-const CACHE_NAME = "child-contact-v5";
+const CACHE_NAME = "child-contact-v8";
 const ASSETS = [
   "./",
   "./index.html",
-  "./style.css?v=5",
-  "./script.js?v=5",
+  "./style.css?v=8",
+  "./script.js?v=8",
   "./manifest.webmanifest",
   "./assets/logo.svg",
   "./assets/kakao.svg",
-  "./assets/wechat.svg",
+  "./assets/whatsapp.svg",
   "./assets/phone.svg",
   "./assets/location.svg",
-  "./assets/copy.svg",
   "./assets/favicon.png",
   "./assets/icon-192.png",
-  "./assets/icon-512.png",
-  "./images/wechat-qr.png"
+  "./assets/icon-512.png"
 ];
 
 self.addEventListener("install", (event) => {
