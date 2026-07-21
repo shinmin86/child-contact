@@ -718,3 +718,20 @@ html[data-theme="dark"] .action-kakao {
     font-size: 17px;
   }
 }
+
+
+/* v7: WhatsApp direct contact */
+.action-whatsapp {
+  color: #ffffff;
+  background: linear-gradient(145deg, #2de070, #25d366);
+  box-shadow: 0 12px 24px rgba(37, 211, 102, .24);
+}
+
+.action-whatsapp .action-icon {
+  background: rgba(255,255,255,.14);
+}
+
+.action-whatsapp .action-icon img {
+  width: 44px;
+  height: 44px;
+}
