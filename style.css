@@ -735,3 +735,32 @@ html[data-theme="dark"] .action-kakao {
   width: 44px;
   height: 44px;
 }
+
+
+/* v8 fixes */
+.theme-toggle {
+  padding: 7px 10px;
+}
+
+.theme-toggle-text {
+  font-size: 9px !important;
+  letter-spacing: 0;
+  max-width: 155px;
+}
+
+@media (max-width: 390px) {
+  .theme-toggle-text {
+    font-size: 8px !important;
+    max-width: 132px;
+  }
+}
+
+.action-whatsapp .action-icon {
+  background: rgba(255,255,255,.18);
+}
+
+.action-whatsapp .action-icon img {
+  width: 34px;
+  height: 34px;
+  display: block;
+}
