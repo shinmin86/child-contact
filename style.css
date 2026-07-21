@@ -660,3 +660,61 @@ html[data-theme="dark"] .action-kakao {
     display: none;
   }
 }
+
+
+/* v4: JavaScript messages show Korean, English, Traditional Chinese and Simplified Chinese together */
+.toast {
+  white-space: pre-line;
+}
+
+.action-copy strong > span,
+.action-copy small > span {
+  display: block;
+}
+
+.theme-toggle-text {
+  max-width: 240px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+/* v5: Korean, English and Chinese names displayed together */
+.person-name {
+  display: grid !important;
+  gap: 4px;
+  letter-spacing: normal !important;
+}
+
+.person-name span {
+  display: block;
+  overflow-wrap: anywhere;
+}
+
+.person-name [lang="ko"] {
+  font-size: clamp(25px, 7vw, 34px);
+  letter-spacing: -.04em;
+}
+
+.person-name [lang="en"] {
+  color: var(--text-secondary);
+  font-size: clamp(12px, 3.6vw, 16px);
+  font-weight: 800;
+  letter-spacing: .02em;
+}
+
+.person-name [lang="zh-Hant"] {
+  color: var(--text-secondary);
+  font-size: clamp(17px, 5vw, 22px);
+  font-weight: 800;
+}
+
+@media (max-width: 390px) {
+  .person-name [lang="en"] {
+    font-size: 11px;
+  }
+
+  .person-name [lang="zh-Hant"] {
+    font-size: 17px;
+  }
+}
