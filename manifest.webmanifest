@@ -1,0 +1,21 @@
+{
+  "name": "송아이 안전 연락",
+  "short_name": "안전 연락",
+  "description": "미아 발생 시 보호자에게 연락하기 위한 페이지",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f4f7fc",
+  "theme_color": "#f4f7fc",
+  "icons": [
+    {
+      "src": "./assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "./assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
