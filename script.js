@@ -13,27 +13,19 @@
   const TEXT = {
     darkMode: {
       ko: "다크 모드",
-      en: "Dark mode",
-      zhHant: "深色模式",
-      zhHans: "深色模式"
+      en: "Dark mode"
     },
     lightMode: {
       ko: "라이트 모드",
-      en: "Light mode",
-      zhHant: "淺色模式",
-      zhHans: "浅色模式"
+      en: "Light mode"
     },
     switchToDark: {
       ko: "다크 모드로 전환",
-      en: "Switch to dark mode",
-      zhHant: "切換至深色模式",
-      zhHans: "切换至深色模式"
+      en: "Switch to dark mode"
     },
     switchToLight: {
       ko: "라이트 모드로 전환",
-      en: "Switch to light mode",
-      zhHant: "切換至淺色模式",
-      zhHans: "切换至浅色模式"
+      en: "Switch to light mode"
     },
     copiedWechat: {
       ko: "WeChat ID가 복사되었습니다.",
@@ -108,7 +100,11 @@
   }
 
   function inline(item) {
-    return [item.ko, item.en, item.zhHant, item.zhHans].join(" · ");
+    return [item.ko, item.en, item.zhHant, item.zhHans].filter(Boolean).join(" · ");
+  }
+
+  function koEnInline(item) {
+    return [item.ko, item.en].join(" · ");
   }
 
   function multilingualHtml(item) {
@@ -131,10 +127,10 @@
 
     document.documentElement.dataset.theme = isDark ? "dark" : "light";
     themeToggle.setAttribute("aria-pressed", String(isDark));
-    themeToggle.setAttribute("aria-label", inline(ariaText));
-    themeToggle.setAttribute("title", multiline(ariaText));
+    themeToggle.setAttribute("aria-label", koEnInline(ariaText));
+    themeToggle.setAttribute("title", [ariaText.ko, ariaText.en].join("\n"));
     themeIcon.textContent = isDark ? "☀️" : "🌙";
-    themeText.textContent = inline(visibleText);
+    themeText.textContent = koEnInline(visibleText);
     themeColorMeta.setAttribute("content", isDark ? "#08111f" : "#f5f8ff");
 
     if (persist) {
@@ -264,7 +260,7 @@
 
   if ("serviceWorker" in navigator && location.protocol === "https:") {
     window.addEventListener("load", () => {
-      navigator.serviceWorker.register("./sw.js?v=5").catch(() => {});
+      navigator.serviceWorker.register("./sw.js?v=6").catch(() => {});
     });
   }
 })();
