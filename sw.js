@@ -7,7 +7,7 @@ const ASSETS = [
   "./manifest.webmanifest",
   "./assets/logo.svg",
   "./assets/kakao.svg",
-  "./assets/whatsapp.svg",
+  "./assets/wechat.svg",
   "./assets/phone.svg",
   "./assets/location.svg",
   "./assets/favicon.png",
