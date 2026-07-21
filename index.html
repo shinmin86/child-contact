@@ -16,7 +16,7 @@
   </script>
   <link rel="icon" type="image/png" href="./assets/favicon.png">
   <link rel="manifest" href="./manifest.webmanifest">
-  <link rel="stylesheet" href="./style.css?v=5">
+  <link rel="stylesheet" href="./style.css?v=7">
 </head>
 <body>
   <main class="page-shell">
@@ -84,22 +84,25 @@
           <span class="chevron" aria-hidden="true">›</span>
         </a>
 
-        <button class="action action-wechat" id="open-wechat" type="button">
+        <a class="action action-whatsapp"
+           href="https://wa.me/821029119872"
+           target="_blank"
+           rel="noopener">
           <span class="action-icon">
-            <img src="./assets/wechat.svg" alt="">
+            <img src="./assets/whatsapp.svg" alt="">
           </span>
           <span class="action-copy">
-            <strong>WeChat으로 연락하기</strong>
+            <strong>WhatsApp으로 연락하기</strong>
             <small class="multilingual-copy">
-              <span lang="en">Contact via WeChat · ID: shinmin</span>
-              <span lang="zh-Hant">透過 WeChat 聯絡 · ID：shinmin</span>
-              <span lang="zh-Hans">通过 WeChat 联系 · ID：shinmin</span>
+              <span lang="en">Contact directly via WhatsApp</span>
+              <span lang="zh-Hant">透過 WhatsApp 直接聯絡</span>
+              <span lang="zh-Hans">通过 WhatsApp 直接联系</span>
             </small>
           </span>
           <span class="chevron" aria-hidden="true">›</span>
-        </button>
+        </a>
 
-        <a class="action action-phone" href="tel:+821011112222">
+        <a class="action action-phone" href="tel:+821029119872">
           <span class="action-icon action-icon-soft">
             <img src="./assets/phone.svg" alt="">
           </span>
@@ -147,47 +150,8 @@
     </section>
   </main>
 
-  <div class="modal" id="wechat-modal" hidden>
-    <div class="modal-backdrop" data-close-modal></div>
-    <section class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="wechat-title">
-      <button class="modal-close" type="button" data-close-modal aria-label="닫기">×</button>
-      <div class="modal-heading">
-        <span class="wechat-badge">
-          <img src="./assets/wechat.svg" alt="">
-        </span>
-        <div>
-          <p class="modal-kicker">WECHAT CONTACT</p>
-          <h2 id="wechat-title">WeChat으로 연락하기</h2>
-          <p class="modal-title-translation" lang="en">Contact via WeChat</p>
-          <p class="modal-title-translation" lang="zh-Hant">透過 WeChat 聯絡</p>
-          <p class="modal-title-translation" lang="zh-Hans">通过 WeChat 联系</p>
-        </div>
-      </div>
-
-      <img class="wechat-qr" src="./images/wechat-qr.png" alt="WeChat shinmin 친구 추가 QR 코드">
-
-      <div class="wechat-id-row">
-        <div>
-          <span>WeChat ID</span>
-          <strong>shinmin</strong>
-        </div>
-        <button id="copy-wechat-id" type="button">
-          <img src="./assets/copy.svg" alt="">
-          복사
-        </button>
-      </div>
-
-      <div class="modal-help">
-        <p>WeChat 앱의 <b>스캔</b> 기능으로 QR 코드를 촬영하거나 ID <b>shinmin</b>을 검색해 주세요.</p>
-        <p lang="en">Scan the QR code in WeChat or search for ID <b>shinmin</b>.</p>
-        <p lang="zh-Hant">請使用 WeChat 的掃描功能掃描 QR Code，或搜尋 ID <b>shinmin</b>。</p>
-        <p lang="zh-Hans">请使用 WeChat 的扫一扫功能扫描二维码，或搜索 ID <b>shinmin</b>。</p>
-      </div>
-    </section>
-  </div>
-
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-  <script src="./script.js?v=5"></script>
+  <script src="./script.js?v=7"></script>
 </body>
 </html>
